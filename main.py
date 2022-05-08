@@ -22,7 +22,7 @@ load_dotenv()
 login_manager = LoginManager()
 error = ""
 
-app.config['SECRET_KEY'] = os.environ.get("APP_KEY")
+app.config['SECRET_KEY'] = os.getenv("APP_KEY")
 ckeditor = CKEditor(app)
 Bootstrap(app)
 login_manager.init_app(app)
