@@ -10,17 +10,19 @@ from forms import Registerform, CreatePostForm, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 from functools import wraps
 from sqlalchemy import Table, Column, Integer, ForeignKey
+from dotenv import load_dotenv
+import os
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 app = Flask(__name__)
 Base = declarative_base()
 
-
+load_dotenv()
 
 login_manager = LoginManager()
 error = ""
 
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get("APP_KEY")
 ckeditor = CKEditor(app)
 Bootstrap(app)
 login_manager.init_app(app)
